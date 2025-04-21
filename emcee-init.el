@@ -7,6 +7,7 @@
 ;; (require 'emcee-init)
 ;; -------------------------------------------------------------------------
 (add-to-list 'load-path ".")
+(setq initial-major-mode 'org-mode)
 
 ;; Load Emcee Configs
 ;; ------------------
@@ -19,8 +20,7 @@
 ;; ORG CAPTURE MENU CONFIG
 ;; -----------------------
 (use-package org
-  :hook
-  visual-line-mode
+  :hook (text-mode . visual-line-mode)
   :config
   ;;(visual-line-mode t)
   (display-line-numbers-mode nil)
