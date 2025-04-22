@@ -7,7 +7,6 @@
 ;; (require 'emcee-init)
 ;; -------------------------------------------------------------------------
 (add-to-list 'load-path ".")
-(setq initial-major-mode 'org-mode)
 
 ;; Load Emcee Configs
 ;; ------------------
@@ -15,6 +14,18 @@
 (require 'emcee-theme)
 (require 'emcee-packages)
 (require 'emcee-functions)
+
+;; Load Scratch Buffer Text
+;; ------------------------
+(setq initial-major-mode 'org-mode)
+(let ((filename (concat user-emacs-directory "emcee/scratch-buffer.txt")))
+  (when (file-exists-p filename)
+    (let ((scratch-buffer (get-buffer "*scratch*")))
+      (when scratch-buffer
+        (with-current-buffer scratch-buffer
+          (erase-buffer)
+          (insert-file-contents filename)
+	  (goto-char (point-max)))))))
 
 
 ;; ORG CAPTURE MENU CONFIG

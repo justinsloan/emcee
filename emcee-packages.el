@@ -1,8 +1,6 @@
 
 
 
-
-
 ;; Package Manager
 ;; ---------------
 
@@ -20,6 +18,16 @@
 (use-package vertico            :ensure t)
 (use-package vertico-posframe   :ensure t)
 (use-package magit              :ensure t)
+
+(use-package dired
+  :ensure nil
+  :hook
+  (dired-mode . all-the-icons-dired-mode))
+
+(use-package move-text
+  :ensure t
+  :config
+  (move-text-default-bindings))
 
 (use-package nov
   :ensure t

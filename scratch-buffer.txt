@@ -1,0 +1,3 @@
+;; This buffer is for misc. notes and is not automatically saved.
+;; Use it like a stiky-note or temporary placeholder throughout the work day.
+

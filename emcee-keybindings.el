@@ -56,6 +56,7 @@
 (define-key menu-key "es"  '("Select all" . mark-whole-buffer))
 (define-key menu-key "ef"  '("Find"       . swiper-isearch))
 (define-key menu-key "er"  '("Replace"    . emcee-query-replace-from-start))
+(define-key menu-key "em"  '("Multiple Cursors" . set-rectangular-region-anchor)
 (define-key menu-key "eid" '("Date"       . emcee-insert-date))
 (define-key menu-key "eit" '("Time"       . emcee-insert-time))
 ;; AI check grammar
@@ -66,7 +67,7 @@
 ;; Buffer Menu
 (define-key menu-key "bn" '("Next Buffer"     . next-buffer))
 (define-key menu-key "bp" '("Previous Buffer" . previous-buffer))
-(define-key menu-key "bk" '("Kill Buffer"     . kill-buffer))
+(define-key menu-key "bk" '("Kill Buffer"     . kill-current-buffer))
 (define-key menu-key "bl" '("List Buffers"    . ivy-switch-buffer))
 (define-key menu-key "bq" '("Abort"           . keyboard-quit))
 
