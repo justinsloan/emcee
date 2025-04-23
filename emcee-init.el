@@ -1,5 +1,5 @@
 ;; -------------------------------------------------------------------------
-;; EMCEE - Emacs Menu Configuration for Elightened Editing
+;; EMCEE - Emacs Mneumonic Configuration for Easy Editing
 ;; Vision: Mneumonic menu-driven AI assisted editor
 ;;
 ;; To use Emcee, add the following to your init.el file:
