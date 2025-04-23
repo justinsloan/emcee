@@ -24,6 +24,11 @@
   :hook
   (dired-mode . all-the-icons-dired-mode))
 
+(use-package multiple-cursors
+  :ensure t
+  :init
+  (multiple-cursors-mode 1))
+
 (use-package move-text
   :ensure t
   :config
@@ -168,9 +173,9 @@
 ;;  :hook
 ;;  (emacs-lisp-mode . flycheck-package-setup))
 
-;;(use-package elsa
-;;  :defer t
-;;  :ensure t)
+(use-package elsa
+  :defer t
+  :ensure t)
 
 ;;(use-package flycheck-elsa
 ;;  :ensure t
