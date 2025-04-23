@@ -7,7 +7,7 @@
 ;; --------------------
 ;; Set <menu> as global leader key
 (define-key global-map (kbd "\<menu>") 'emcee-menu-main)
-;;(global-set-key (kbd "\<menu>") (lambda () (interactive) (emcee-menu-main)))
+(global-set-key (kbd "M-m") (lambda () (interactive) (emcee-menu-main)))
 
 (transient-define-prefix emcee-menu-insert ()
   "Transient insert menu for Emcee."
