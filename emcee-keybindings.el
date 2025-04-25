@@ -1,4 +1,8 @@
-
+;;  _____                         
+;; | ____|_ __ ___   ___ ___  ___ 
+;; |  _| | '_ ` _ \ / __/ _ \/ _ \
+;; | |___| | | | | | (_|  __/  __/
+;; |_____|_| |_| |_|\___\___|\___|
 
 (require 'transient)
 
@@ -21,7 +25,7 @@
 (transient-define-prefix emcee-menu-tools ()
   "Transient insert menu for Emcee."
   ["Tools" ; Group 1
-    ("t" "Terminal"          term)
+    ("t" "Terminal"          vterm)
     ("b" "Browser"           eww)
     ("c" "Calculator"        calc)
     ("g" "Git"               magit-status)

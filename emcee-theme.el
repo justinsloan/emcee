@@ -1,4 +1,10 @@
-;; EMCEE Config
+;;  _____                         
+;; | ____|_ __ ___   ___ ___  ___ 
+;; |  _| | '_ ` _ \ / __/ _ \/ _ \
+;; | |___| | | | | | (_|  __/  __/
+;; |_____|_| |_| |_|\___\___|\___|
+
+
 ;; Set Theme, Font, & Modeline Faces
 ;; ---------------------------------
 
@@ -20,23 +26,23 @@
 
 ;; Theme
 ;; -----
-;;(use-package doom-themes
-;;  :ensure t
-;;  :config
-;;  ;; Global settings (defaults)
-;;  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-;;        doom-themes-enable-italic t) ; if nil, italics is universally disabled
-;;  ;;(load-theme 'doom-tokyo-night t)
-;;  (load-theme 'doom-shades-of-purple t)
-;;  ;; Enable flashing mode-line on errors
-;;  (doom-themes-visual-bell-config)
-;;  ;; Enable custom neotree theme (nerd-icons must be installed!)
-;;  (doom-themes-neotree-config)
-;;  ;; or for treemacs users
-;;  (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
-;;  (doom-themes-treemacs-config)
-;;  ;; Corrects (and improves) org-mode's native fontification.
-;;  (doom-themes-org-config))
+(use-package doom-themes
+  :ensure t
+  :config
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  ;;(load-theme 'doom-tokyo-night t)
+  (load-theme 'doom-shades-of-purple t)
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+  ;; Enable custom neotree theme (nerd-icons must be installed!)
+  (doom-themes-neotree-config)
+  ;; or for treemacs users
+  (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
+  (doom-themes-treemacs-config)
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
 
 ;; Font config
 ;; -----------

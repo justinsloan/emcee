@@ -1,12 +1,25 @@
 ;; -------------------------------------------------------------------------
-;; EMCEE - Emacs Mneumonic Configuration for Easy Editing
-;; Vision: Mneumonic menu-driven AI assisted editor
+;;  _____                         
+;; | ____|_ __ ___   ___ ___  ___ 
+;; |  _| | '_ ` _ \ / __/ _ \/ _ \
+;; | |___| | | | | | (_|  __/  __/
+;; |_____|_| |_| |_|\___\___|\___|
+;; 
+;; EMCEE - Emacs Mneumonic Configuration for Efficient Editing
+;; Vision: Mneumonic, menu-driven, AI assisted, productivity workflow
 ;;
 ;; To use Emcee, add the following to your init.el file:
 ;; (add-to-list 'load-path (locate-user-emacs-file "emcee/"))
 ;; (require 'emcee-init)
 ;; -------------------------------------------------------------------------
 (add-to-list 'load-path ".")
+
+;; Declutter auto-save
+;; -------------------
+(setq backup-directory-alist
+      `(("." . ,(concat user-emacs-directory "auto-save")))
+      delete-old-versions t
+      version-control t)
 
 ;; Load Emcee Configs
 ;; ------------------

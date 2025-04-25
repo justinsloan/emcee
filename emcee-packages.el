@@ -1,4 +1,8 @@
-
+;;  _____                         
+;; | ____|_ __ ___   ___ ___  ___ 
+;; |  _| | '_ ` _ \ / __/ _ \/ _ \
+;; | |___| | | | | | (_|  __/  __/
+;; |_____|_| |_| |_|\___\___|\___|
 
 
 ;; Package Manager
@@ -11,13 +15,18 @@
 (package-initialize)
 
 ;; Install packages
-(use-package all-the-icons      :ensure t)
-(use-package dashboard          :ensure t)
-(use-package nerd-icons         :ensure t)
-(use-package which-key-posframe :ensure t)
-(use-package vertico            :ensure t)
-(use-package vertico-posframe   :ensure t)
-(use-package magit              :ensure t)
+(use-package all-the-icons            :ensure t)
+(use-package all-the-icons-dired      :ensure t)
+(use-package all-the-icons-nerd-fonts :ensure t)
+(use-package all-the-icons-ivy-rich   :ensure t)
+(use-package all-the-icons-ivy        :ensure t)
+(use-package dashboard                :ensure t)
+(use-package nerd-icons               :ensure t)
+(use-package which-key-posframe       :ensure t)
+(use-package vertico                  :ensure t)
+(use-package vertico-posframe         :ensure t)
+(use-package magit                    :ensure t)
+(use-package vterm                    :ensure t)
 
 (use-package dired
   :ensure nil
