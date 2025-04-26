@@ -4,7 +4,6 @@
 ;; | |___| | | | | | (_|  __/  __/
 ;; |_____|_| |_| |_|\___\___|\___|
 
-(provide 'emcee-functions)
 
 ;; Custom shutdown function
 (defun emcee-server-shutdown () 
@@ -58,3 +57,20 @@
    "*Bash Error Buffer*"
    ;; show error buffer?
    t))))
+
+(defun emcee-write-file-as ()
+  "Write a copy of the current buffer or selected region to a new file."
+  (interactive)
+  (let* ((curr (buffer-file-name))
+         (new (read-file-name
+               "New file name: " nil nil nil
+               (and curr (file-name-nondirectory curr))))
+         (mustbenew (if (and curr (file-equal-p new curr)) 'excl t)))
+    (if (use-region-p)
+        (write-region (region-beginning) (region-end) new nil nil nil mustbenew)
+      (save-restriction
+        (widen)
+        (write-region (point-min) (point-max) new nil nil nil mustbenew)))))
+
+
+(provide 'emcee-functions)

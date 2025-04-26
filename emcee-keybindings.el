@@ -56,7 +56,7 @@
     ("fd" "Open with Dired..." dired-jump)
     ("fr" "Open Recent..."     recentf-open-files)
     ("fs" "Save"               save-buffer)
-    ;; Save as...
+    ("fa" "Save as..."         emcee-write-file-as)
     ("fc" "Close"              kill-current-buffer)
     ;; Print
     ("fl" "List Buffers..."    ivy-switch-buffer)
