@@ -50,7 +50,7 @@
   :font "FiraMono"
   :height 160)
 (set-face-attribute 'variable-pitch nil
-  :font "Ubuntu"
+  :font "Liberation Sans"
   :height 160)
 (set-face-attribute 'fixed-pitch nil
   :font "FiraMono"
@@ -74,12 +74,13 @@
            (propertize " ** " 'face 'mode-line-modified-face))
           (t " 🖋️ ")))
    ;"    "
-   ; mode indicators: vc, recursive edit, major/ minor modes, process, global
-   (vc-mode vc-mode)
-   " %["
+   ; mode indicators: major mode, version control, working file, position, font
+   "%["
    (:propertize mode-name
                 face mode-line-mode-face)
-   "  "
+   " ["
+   (vc-mode vc-mode)
+   " ] "
    ;(:eval (propertize (format-mode-line minor-mode-alist)
    ;                   'face 'mode-line-minor-mode-face))
    (:propertize mode-line-process
@@ -94,13 +95,15 @@
    ; Position, including warning for 80 columns
    ;(:eval (propertize "aaaaa" 'mode-line-format-right-align))
    (:propertize " (%p)  %l:" face mode-line-position-face)
-   (:eval (propertize "%c" 'face
+   (:eval (propertize "%c " 'face
                       (if (>= (current-column) 80)
                           'mode-line-80col-face
                         'mode-line-position-face)))
+   ; Font face
+   (:propertize (:eval (get-font-name (frame-parameter nil 'font))))
    ))
 
-;; Modeline Helper function
+;; Modeline Helper functions
 (defun shorten-directory (dir max-length)
   "Show up to `max-length' characters of a directory name `dir'."
   (let ((path (reverse (split-string (abbreviate-file-name dir) "/")))
@@ -113,6 +116,20 @@
     (when path
       (setq output (concat ".../" output)))
     output))
+
+(defun get-font-name (font-spec)
+  "Extract and return the base NAME from FONT-SPEC string."
+  ;; Remove leading dashes (-*- or -*) that are often used to denote style attributes.
+  (let* ((trimmed-spec (replace-regexp-in-string "-+$" "" font-spec))
+         (parts (split-string trimmed-spec "-"))
+         (base-name nil))
+    ;; Handle X11/XF86 naming scheme
+    (if (member "OT1" parts)
+        (setq base-name (nth 1 parts))  ; OT1 encoding style, usually "fontname-encoding"
+      (if (member "Type1" parts)
+          (setq base-name (nth 1 parts))  ; Type1 encoding style
+        ;; Handle modern X11 font naming conventions or other formats
+        (setq base-name (nth 2 parts))))))
 
 ;; Extra mode line faces
 (make-face 'mode-line-read-only-face)
@@ -148,7 +165,7 @@
     :foreground "gray60")
 (set-face-attribute 'mode-line-filename-face nil
     :inherit 'mode-line-face
-    :foreground "#eab700"
+    :foreground "#eab700" ; yellow
     :weight 'bold)
 (set-face-attribute 'mode-line-position-face nil
     :inherit 'mode-line-face

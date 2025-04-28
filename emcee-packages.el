@@ -62,7 +62,7 @@
   :defer 0.1
   :diminish
   :bind (("C-c C-r" . ivy-resume)
-         ("C-x B" . ivy-switch-buffer-other-window))
+         ("C-x B"   . ivy-switch-buffer-other-window))
   :custom
   (ivy-count-format "(%d/%d) ")
   (ivy-use-virtual-buffers t)
@@ -119,12 +119,32 @@
   (popper-mode +1)
   (popper-echo-mode +1)) ; For echo area hints
 
+(use-package org
+  :ensure nil
+  :hook (org-indent-mode)
+  :config
+  (setq org-hide-emphasis-markers t)
+  (line-number-mode -1))
+
 (use-package org-bullets
   :ensure t
-  :init
+  :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-  (add-hook 'org-mode-hook (lambda () (line-number-mode -1)))
-  (add-hook 'org-mode-hook (lambda () (org-indent-mode))))
+  (let* ((base-font-color     (face-foreground 'default nil 'default))
+         (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
+
+    (custom-theme-set-faces
+     'user
+     `(org-level-8 ((t (,@headline))))
+     `(org-level-7 ((t (,@headline))))
+     `(org-level-6 ((t (,@headline))))
+     `(org-level-5 ((t (,@headline))))
+     `(org-level-4 ((t (,@headline, :height 1.1))))
+     `(org-level-3 ((t (,@headline, :height 1.25))))
+     `(org-level-2 ((t (,@headline, :height 1.5))))
+     `(org-level-1 ((t (,@headline, :height 1.75))))
+     `(org-document-title ((t (,@headline, :height 2.0 :underline nil)))))))
+
 
 (use-package lisp
   :hook
