@@ -6,7 +6,7 @@
 
 
 ;; Set Theme, Font, & Modeline Faces
-;; ---------------------------------
+;; =================================
 
 
 ;; Disable Interface Elements
