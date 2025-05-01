@@ -14,7 +14,8 @@ If you decide to use Emcee as your primary config, you can add the following to 
 ## Goal
 Build a custom Emacs productivity workflow based on chord-less keybindings.
 
-## Non-goals
+## Feature Map
+ - Open epub files in a dedicated vertical-split window
  - Not an attempt to replace the standard Emacs user experience. All default keybindings still still work.
 
 ## Features
