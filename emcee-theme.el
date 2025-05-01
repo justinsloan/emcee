@@ -12,37 +12,39 @@
 ;; Disable Interface Elements
 ;; --------------------------
 (setq inhibit-startup-screen t)
-(menu-bar-mode -1)
-(toggle-scroll-bar -1)
-(tool-bar-mode -1)
+(menu-bar-mode              -1)
+(toggle-scroll-bar          -1)
+(tool-bar-mode              -1)
 
 
 ;; Enable Interface Elements
 ;; -------------------------
-(column-number-mode 1)
-(which-key-mode 1)
-(ido-mode 1)
-
+(delete-selection-mode 1)
+(column-number-mode    1)
+(shift-select-mode     1)
+(which-key-mode        1)
+(ido-mode              1)
 
 ;; Theme
 ;; -----
 (use-package doom-themes
   :ensure t
   :config
-  ;; Global settings (defaults)
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  ;;(load-theme 'doom-tokyo-night t)
-  (load-theme 'doom-shades-of-purple t)
-  ;; Enable flashing mode-line on errors
-  (doom-themes-visual-bell-config)
-  ;; Enable custom neotree theme (nerd-icons must be installed!)
-  (doom-themes-neotree-config)
-  ;; or for treemacs users
-  (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
-  (doom-themes-treemacs-config)
-  ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
+  (when (display-graphics-p)
+    ;; Global settings (defaults)
+    (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+          doom-themes-enable-italic t) ; if nil, italics is universally disabled
+    ;;(load-theme 'doom-tokyo-night t)
+    (load-theme 'doom-shades-of-purple t)
+    ;; Enable flashing mode-line on errors
+    (doom-themes-visual-bell-config)
+    ;; Enable custom neotree theme (nerd-icons must be installed!)
+    (doom-themes-neotree-config)
+    ;; or for treemacs users
+    (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
+    (doom-themes-treemacs-config)
+    ;; Corrects (and improves) org-mode's native fontification.
+    (doom-themes-org-config)))
 
 ;; Font config
 ;; -----------
