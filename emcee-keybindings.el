@@ -59,7 +59,7 @@
     ("fa" "Save as..."         emcee-write-file-as)
     ("fc" "Close"              kill-current-buffer)
     ;; Print
-    ("fl" "List Buffers..."    ivy-switch-buffer)
+    ;;("fl" "List Buffers..."    ivy-switch-buffer)
     ("fn" "Next Buffer"        next-buffer)
     ("fp" "Previous Buffer"    previous-buffer)]
 
@@ -79,6 +79,7 @@
      ("\\" "Switch Window"     other-window)
      ("|" "Split Vertically"   split-window-right)
      ("_" "Split Horizontally" split-window-below)
+     ("b" "List Buffers..."    ivy-switch-buffer)
      ("c" "Close Window Pane"  delete-window)]
 
    ["Actions" ; Group 2

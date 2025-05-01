@@ -139,11 +139,11 @@
      `(org-level-7 ((t (,@headline))))
      `(org-level-6 ((t (,@headline))))
      `(org-level-5 ((t (,@headline))))
-     `(org-level-4 ((t (,@headline, :height 1.1))))
-     `(org-level-3 ((t (,@headline, :height 1.25))))
-     `(org-level-2 ((t (,@headline, :height 1.5))))
-     `(org-level-1 ((t (,@headline, :height 1.75))))
-     `(org-document-title ((t (,@headline, :height 2.0 :underline nil)))))))
+     `(org-level-4 ((t (,@headline))))
+     `(org-level-3 ((t (,@headline, :height 1.1))))
+     `(org-level-2 ((t (,@headline, :height 1.2))))
+     `(org-level-1 ((t (,@headline, :height 1.3))))
+     `(org-document-title ((t (,@headline, :height 1.4 :underline nil)))))))
 
 
 (use-package lisp
