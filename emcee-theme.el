@@ -15,6 +15,7 @@
 (menu-bar-mode              -1)
 (toggle-scroll-bar          -1)
 (tool-bar-mode              -1)
+(scroll-bar-mode            -1)
 
 
 ;; Enable Interface Elements
@@ -24,12 +25,13 @@
 (which-key-mode        1)
 (ido-mode              1)
 
-(add-hook 'after-make-frame-functions
-  (lambda ()
-    ;; only in terminal Emacs
-    (unless (display-graphics-p)
-      (xterm-mouse-mode 1))))
-	 
+(defun new-frame-setup (frame)
+  "Set options based on frame type."
+  (unless (display-graphic-p frame)
+    (xterm-mouse-mode 1)))
+(mapc 'new-frame-setup (frame-list)) ; Run for already-existing frames
+(add-hook 'after-make-frame-functions 'new-frame-setup) ; Run when a new frame is created
+
 
 ;; Theme
 ;; -----
@@ -40,28 +42,31 @@
     ;; Global settings (defaults)
     (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
           doom-themes-enable-italic t) ; if nil, italics is universally disabled
-    (load-theme 'doom-tokyo-night t)
-    ;;(load-theme 'doom-shades-of-purple t)
-    ;; Enable flashing mode-line on errors
-    (doom-themes-visual-bell-config))
+    (load-theme 'doom-tokyo-night t) ; specify theme name
+    (doom-themes-visual-bell-config)) ; enable flashing mode-line on errors
 
     
 ;; Font config
 ;; -----------
-(set-face-attribute 'default nil
-  :font "FiraMono"
-  :height 160)
-(set-face-attribute 'variable-pitch nil
-  :font "Liberation Sans"
-  :height 160)
-(set-face-attribute 'fixed-pitch nil
-  :font "FiraMono"
-  :height 160)
-(setq-default line-spacing 0.12)
-(set-face-attribute 'font-lock-comment-face nil
-  :slant 'italic)
-(set-face-attribute 'font-lock-keyword-face nil
-  :slant 'italic)
+(defun emcee-font-faces ()
+  "Configure custom font-lock faces."
+  (set-face-attribute 'default nil
+    :font "LiberationMono"
+    :height 160)
+  (set-face-attribute 'variable-pitch nil
+    :font "LiberationSans"
+    :height 160)
+  (set-face-attribute 'fixed-pitch nil
+    :font "LiberationMono"
+    :height 160)
+  (setq-default line-spacing 0.12)
+  (set-face-attribute 'font-lock-comment-face nil
+    :slant 'italic)
+  (set-face-attribute 'font-lock-keyword-face nil
+    :slant 'italic))
+(add-hook 'after-init-hook 'emcee-font-faces)
+(add-hook 'server-after-make-frame-hook 'emcee-font-faces)
+
 
 ;; Mode line config
 ;; ----------------
@@ -96,12 +101,13 @@
    ; Position, including warning for 80 columns
    ;(:eval (propertize "aaaaa" 'mode-line-format-right-align))
    (:propertize " (%p)  %l:" face mode-line-position-face)
-   (:eval (propertize "%c " 'face
+   (:eval (propertize "%c   " 'face
                       (if (>= (current-column) 80)
                           'mode-line-80col-face
                         'mode-line-position-face)))
    ; Font face
-   (:propertize (:eval (get-font-name (frame-parameter nil 'font))))
+   (:propertize (:eval (get-font-name (frame-parameter nil 'font)))
+		face mode-line-minor-mode-face)
    ))
 
 ;; Modeline Helper functions
@@ -144,13 +150,13 @@
 (make-face 'mode-line-80col-face)
 
 (set-face-attribute 'mode-line nil
-    :foreground "gray60" :background "gray20"
+    :foreground "gray80" :background "gray20"
     :inverse-video nil
-    :box '(:line-width 6 :color "gray20" :style nil))
+    :box '(:line-width 10 :color "#ffffff" :style nil))
 (set-face-attribute 'mode-line-inactive nil
-    :foreground "gray80" :background "gray40"
+    :foreground "#000111" :background "#000000"
     :inverse-video nil
-    :box '(:line-width 6 :color "gray40" :style nil))
+    :box '(:line-width 1)); :color "#000111" :style nil))
 (set-face-attribute 'mode-line-read-only-face nil
     :inherit 'mode-line-face
     :foreground "#4271ae")
@@ -185,6 +191,9 @@
     :inherit 'mode-line-position-face
     :foreground "black" :background "#eab700")
 
+;; Move mode line to the top
+(setq-default header-line-format mode-line-format)
+(setq-default mode-line-format nil)
 
 
 (provide 'emcee-theme)

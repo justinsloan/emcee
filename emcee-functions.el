@@ -24,6 +24,12 @@
   (interactive)
   (insert (format-time-string "%A, %B %e, %Y")))
 
+(defun emcee-insert-ordinal-date ()
+  "Insert string for today's ordinal date,
+  e.g. 25.365 for year 2025 and day number 365."
+  (interactive)
+  (insert (format-time-string "%y.%j")))
+
 (defun emcee-query-replace-from-start ()
   "Move the cursor to the start of the buffer and perform a query replace."
   (interactive)

@@ -16,8 +16,9 @@
 (transient-define-prefix emcee-menu-insert ()
   "Transient insert menu for Emcee."
   ["Insert..." ; Group 1
-   ("d" "Date"       emcee-insert-date)
-   ("t" "Time"       emcee-insert-time)]
+   ("d" "Date"         emcee-insert-date)
+   ("o" "Ordinal Date" emcee-insert-ordinal-date)
+   ("t" "Time"         emcee-insert-time)]
   [:class transient-row
 	  ("C-g" "< Go Back"   keyboard-quit)
 	  ("q" "Dismiss"       ignore :transient transient--do-exit)])

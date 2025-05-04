@@ -30,3 +30,4 @@ Build a custom Emacs productivity workflow based on chord-less keybindings.
  - Check if Fira Mono is installed, default to another font if not found
  - Automatically check GitHub repo for updates
  - Write the manual
+ - Check the major mode of the current buffer and open the corresponding Transient menu

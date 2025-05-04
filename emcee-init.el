@@ -21,12 +21,6 @@
       delete-old-versions t
       version-control t)
 
-;; Load Emcee Configs
-;; ------------------
-(require 'emcee-keybindings)
-(require 'emcee-theme)
-(require 'emcee-packages)
-(require 'emcee-functions)
 
 ;; Load Scratch Buffer Text
 ;; ------------------------
@@ -38,7 +32,15 @@
         (with-current-buffer scratch-buffer
           (erase-buffer)
           (insert-file-contents filename)
-	  (goto-char (point-max)))))))
+          (add-hook 'after-init-hook 'end-of-buffer))))))
+
+
+;; Load Emcee Configs
+;; ------------------
+(require 'emcee-keybindings)
+(require 'emcee-packages)
+(require 'emcee-functions)
+(require 'emcee-theme)
 
 
 ;; ORG CAPTURE MENU CONFIG

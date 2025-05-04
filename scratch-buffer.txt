@@ -1,9 +1,14 @@
- _____                         
-| ____|_ __ ___   ___ ___  ___ 
-|  _| | '_ ` _ \ / __/ _ \/ _ \
-| |___| | | | | | (_|  __/  __/
-|_____|_| |_| |_|\___\___|\___|
 
-This buffer is for misc. notes and is not automatically saved.
+#+begin_src
+
+               ___ _ __ ___   ___ ___  ___ 
+   WELCOME    / _ \ '_ ` _ \ / __/ _ \/ _ \
+     TO      |  __/ | | | | | (_|  __/  __/
+   v25.123    \___|_| |_| |_|\___\___|\___|
+
+
+#+end_src
+
+This buffer is for misc. notes and is *not* automatically saved.
 Use it like a stiky-note or temporary placeholder throughout the work day.
 
