@@ -12,18 +12,21 @@
 ;; Disable Interface Elements
 ;; --------------------------
 (setq inhibit-startup-screen t)
-(menu-bar-mode              -1)
 (toggle-scroll-bar          -1)
-(tool-bar-mode              -1)
 (scroll-bar-mode            -1)
+(menu-bar-mode              -1)
+(tool-bar-mode              -1)
 
 
 ;; Enable Interface Elements
 ;; -------------------------
-(delete-selection-mode 1)
-(column-number-mode    1)
-(which-key-mode        1)
-(ido-mode              1)
+(setq auto-revert-avoid-polling 1)
+(global-auto-revert-mode        1)
+(delete-selection-mode          1)
+(column-number-mode             1)
+(which-key-mode                 1)
+(ido-mode                       1)
+
 
 (defun new-frame-setup (frame)
   "Set options based on frame type."
@@ -70,23 +73,21 @@
 
 ;; Mode line config
 ;; ----------------
-(setq-default
- mode-line-format
+(setq-default mode-line-format
  '(; read-only or modified status
    (:eval
     (cond (buffer-read-only
            (propertize " 🔏 " 'face 'mode-line-read-only-face))
           ((buffer-modified-p)
-           (propertize " ** " 'face 'mode-line-modified-face))
+           (propertize " 💾 " 'face 'mode-line-modified-face))
           (t " 🖋️ ")))
-   ;"    "
-   ; mode indicators: major mode, version control, working file, position, font
-   "%["
+   ; major mode & version control
+   " %["
    (:propertize mode-name
                 face mode-line-mode-face)
    " ["
    (vc-mode vc-mode)
-   " ] "
+   " ]"
    ;(:eval (propertize (format-mode-line minor-mode-alist)
    ;                   'face 'mode-line-minor-mode-face))
    (:propertize mode-line-process
@@ -94,15 +95,15 @@
    (global-mode-string global-mode-string)
    " %]"
    ; directory and buffer/file name
-   (:propertize (:eval (shorten-directory default-directory 30))
+   (:propertize (:eval (shorten-directory default-directory 0))
                 face mode-line-folder-face)
    (:propertize "%b "
                 face mode-line-filename-face)
    ; Position, including warning for 80 columns
    ;(:eval (propertize "aaaaa" 'mode-line-format-right-align))
    (:propertize " (%p)  %l:" face mode-line-position-face)
-   (:eval (propertize "%c   " 'face
-                      (if (>= (current-column) 80)
+   (:eval (propertize "%c  " 'face
+                      (if (> (current-column) 80)
                           'mode-line-80col-face
                         'mode-line-position-face)))
    ; Font face
@@ -121,7 +122,7 @@
       (setq output (concat (car path) "/" output))
       (setq path (cdr path)))
     (when path
-      (setq output (concat ".../" output)))
+      (setq output (concat "" output)))
     output))
 
 (defun get-font-name (font-spec)
@@ -152,18 +153,18 @@
 (set-face-attribute 'mode-line nil
     :foreground "gray80" :background "gray20"
     :inverse-video nil
-    :box '(:line-width 10 :color "#ffffff" :style nil))
+    :box '(:line-width 1 :color "#ffffff" :style nil))
 (set-face-attribute 'mode-line-inactive nil
     :foreground "#000111" :background "#000000"
     :inverse-video nil
-    :box '(:line-width 1)); :color "#000111" :style nil))
+    :box '(:line-width 1 :color "#000111" :style nil))
 (set-face-attribute 'mode-line-read-only-face nil
     :inherit 'mode-line-face
     :foreground "#4271ae")
     ;;:box '(:line-width 2 :color "#4271ae"))
 (set-face-attribute 'mode-line-modified-face nil
     :inherit 'mode-line-face
-    :foreground "#c82829"
+    :background "#c82829"
     ;;:background "#ffffff"
     ;;:box '(:line-width 2 :color "#c82829")
     )
@@ -191,9 +192,11 @@
     :inherit 'mode-line-position-face
     :foreground "black" :background "#eab700")
 
+;; Add some padding
+(spacious-padding-mode)
+
 ;; Move mode line to the top
 (setq-default header-line-format mode-line-format)
 (setq-default mode-line-format nil)
-
 
 (provide 'emcee-theme)

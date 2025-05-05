@@ -24,7 +24,7 @@
 	  ("q" "Dismiss"       ignore :transient transient--do-exit)])
 
 (transient-define-prefix emcee-menu-tools ()
-  "Transient insert menu for Emcee."
+  "Transient tools menu for Emcee."
   ["Tools" ; Group 1
     ("t" "Terminal"          vterm)
     ("b" "Browser"           eww)

@@ -20,7 +20,6 @@
 (use-package all-the-icons-nerd-fonts :ensure t)
 (use-package all-the-icons-ivy-rich   :ensure t)
 (use-package all-the-icons-ivy        :ensure t)
-(use-package dashboard                :ensure t)
 (use-package nerd-icons               :ensure t)
 (use-package which-key-posframe       :ensure t)
 (use-package vertico                  :ensure t)
@@ -31,8 +30,12 @@
 (use-package dired
   :ensure nil
   :hook
-  (dired-mode . all-the-icons-dired-mode))
-
+  (dired-mode . all-the-icons-dired-mode)
+  :init
+  (add-hook 'dired-mode-hook
+    ;; Auto-refresh dired on file change
+    (auto-revert-mode)))
+              
 (use-package multiple-cursors
   :ensure t
   :init
@@ -53,10 +56,10 @@
   :config
   (spacious-padding-mode))
 
-(use-package golden-ratio
-  :ensure t
-  :config
-  (golden-ratio-mode))
+;;(use-package golden-ratio
+;;  :ensure t
+;;  :config
+;;  (golden-ratio-mode))
 
 (use-package ivy
   :defer 0.1

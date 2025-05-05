@@ -22,6 +22,14 @@
       version-control t)
 
 
+;; Load Emcee Configs
+;; ------------------
+(require 'emcee-keybindings)
+(require 'emcee-packages)
+(require 'emcee-functions)
+(require 'emcee-theme)
+
+
 ;; Load Scratch Buffer Text
 ;; ------------------------
 (setq initial-major-mode 'org-mode)
@@ -33,14 +41,6 @@
           (erase-buffer)
           (insert-file-contents filename)
           (add-hook 'after-init-hook 'end-of-buffer))))))
-
-
-;; Load Emcee Configs
-;; ------------------
-(require 'emcee-keybindings)
-(require 'emcee-packages)
-(require 'emcee-functions)
-(require 'emcee-theme)
 
 
 ;; ORG CAPTURE MENU CONFIG
