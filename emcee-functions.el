@@ -12,6 +12,12 @@
   (save-some-buffers) 
   (kill-emacs))
 
+(defun emcee-save-check-parens ()
+  "Run check-parens on save if not org-mode."
+  (interactive)
+  (unless (eq major-mode 'org-mode)
+    (check-parens)))
+
 (defun emcee-insert-time ()
   "Insert string for the current time."
   (interactive) ; permit invocation in minibuffer

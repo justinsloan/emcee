@@ -122,6 +122,13 @@
   (popper-mode +1)
   (popper-echo-mode +1)) ; For echo area hints
 
+(use-package org-modern
+  :ensure t
+  :after org
+  :hook
+  (org-mode . org-modern-mode)
+  (org-agenda-finalize . org-modern-agenda))
+
 (use-package org
   :ensure nil
   :hook (org-indent-mode)
@@ -129,33 +136,10 @@
   (setq org-hide-emphasis-markers t)
   (line-number-mode -1))
 
-(use-package org-bullets
-  :ensure t
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-  (let* ((base-font-color     (face-foreground 'default nil 'default))
-         (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
-
-    (custom-theme-set-faces
-     'user
-     `(org-level-8 ((t (,@headline))))
-     `(org-level-7 ((t (,@headline))))
-     `(org-level-6 ((t (,@headline))))
-     `(org-level-5 ((t (,@headline))))
-     `(org-level-4 ((t (,@headline))))
-     `(org-level-3 ((t (,@headline, :height 1.1))))
-     `(org-level-2 ((t (,@headline, :height 1.2))))
-     `(org-level-1 ((t (,@headline, :height 1.3))))
-     `(org-document-title ((t (,@headline, :height 1.4 :underline nil)))))))
-
-
-(use-package lisp
-  :hook
-  (after-save . check-parens))
-
 (use-package elisp-mode
   :hook
   (emacs-lisp-mode . display-line-numbers-mode)
+  (emacs-lisp-mode . emcee-save-check-parens)
   :bind
   (:map emacs-lisp-mode-map
         ("C-c C-d C-f" . describe-function)))

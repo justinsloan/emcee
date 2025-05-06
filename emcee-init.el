@@ -46,12 +46,14 @@
 ;; ORG CAPTURE MENU CONFIG
 ;; -----------------------
 (use-package org
-  :hook (text-mode . visual-line-mode)
+  :hook
+  (text-mode . visual-line-mode)
+  (org-agenda . (lambda () (setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$"))))
   :config
-  ;;(visual-line-mode t)
   (display-line-numbers-mode nil)
   (setq org-export-publishing-directory "/tmp")
-  (setq org-agenda-files '("~/org"))
+  ;; recursively add all subdirs from org-directory
+  (setq org-agenda-files (directory-files-recursively org-directory "\\.org$"))
   (setq org-capture-templates
     '(("t" "💡 Task" entry
       (file+datetree "~/org/journal.org")
