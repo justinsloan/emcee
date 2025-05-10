@@ -31,7 +31,7 @@
     ("c" "Calculator"        calc)
     ("g" "Git"               magit-status)
     ("d" "Dig (DNS)"         dig)
-    ("a" "AI Assistant"      ellama)
+    ;("a" "AI Assistant"      ellama)
     ("!" "Shell Command"     sh-execute-region)
     (":" "Eval Lisp"         eval-last-sexp)]
   [:class transient-row

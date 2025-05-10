@@ -35,7 +35,12 @@
   (add-hook 'dired-mode-hook
     ;; Auto-refresh dired on file change
     (auto-revert-mode)))
-              
+
+(use-package popup-kill-ring
+  :ensure t
+  :bind ("M-y" . popup-kill-ring))
+
+
 (use-package multiple-cursors
   :ensure t
   :init
@@ -200,23 +205,23 @@
 
 ;; Ellama Config
 ;; -------------
-(use-package ellama
-  :ensure t
-  ;; send last message in chat buffer with C-c C-c
-  :hook (org-ctrl-c-ctrl-c-final . ellama-chat-send-last-message)
-  :init
-  (setopt ellama-keymap-prefix "C-x a i")
-  (setopt ellama-language "English")
-  (setopt ellama-assistant-nick "Emcee")
-  (setopt ellama-auto-scroll t)
-  (require 'llm-ollama)
-  (setopt ellama-provider
-    (make-llm-ollama
-      :chat-model "gemma3:1b"
-      :embedding-model "nomic-embed-text"
-      ))
-  :config
-  (setq ellama-sessions-directory "~/.emacs.d/.local/cache/ellama-sessions"))
+;;(use-package ellama
+;;  :ensure t
+;;  ;; send last message in chat buffer with C-c C-c
+;;  :hook (org-ctrl-c-ctrl-c-final . ellama-chat-send-last-message)
+;;  :init
+;;  (setopt ellama-keymap-prefix "C-x a i")
+;;  (setopt ellama-language "English")
+;;  (setopt ellama-assistant-nick "Emcee")
+;;  (setopt ellama-auto-scroll t)
+;;  (require 'llm-ollama)
+;;  (setopt ellama-provider
+;;    (make-llm-ollama
+;;      :chat-model "gemma3:1b"
+;;      :embedding-model "nomic-embed-text"
+;;      ))
+;;  :config
+;;))
 
 ;; Auto-update Packages on Launch
 ;; ------------------------------

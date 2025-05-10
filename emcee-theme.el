@@ -27,7 +27,6 @@
 (which-key-mode                 1)
 (ido-mode                       1)
 
-(add-to-list 'default-frame-alist '(alpha-background . 90)) ; transparency
 
 (defun new-frame-setup (frame)
   "Set options based on frame type."
@@ -195,6 +194,9 @@
 
 ;; Add some padding
 (spacious-padding-mode)
+
+;; Transparency
+(add-to-list 'default-frame-alist '(alpha-background . 90))
 
 ;; Move mode line to the top
 (setq-default header-line-format mode-line-format)

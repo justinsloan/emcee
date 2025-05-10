@@ -85,4 +85,12 @@
         (write-region (point-min) (point-max) new nil nil nil mustbenew)))))
 
 
+;;(defun emcee-reinstall-package (pkg)
+;;  (interactive (list (intern (completing-read "Reinstall package: " (mapcar #'car package-alist)))))
+;;  (unload-feature pkg)
+;;  (package-reinstall pkg)
+;;  (require pkg))
+
+
+
 (provide 'emcee-functions)
